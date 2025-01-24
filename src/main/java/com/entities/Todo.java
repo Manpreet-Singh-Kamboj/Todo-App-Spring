@@ -1,4 +1,4 @@
-package com.todo.entities;
+package com.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
