@@ -10,25 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
-public class SaveNoteServlet extends HttpServlet {
-
-    public SaveNoteServlet(){
-        super();
-    }
+public class DeleteNoteServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
-            String title = req.getParameter("title");
-            String content = req.getParameter("content");
-            Note note = new Note(title,content,new Date());
+            String noteId = req.getParameter("note_id").trim();
             Session session = FactoryProvider.getFactory().openSession();
+            Note note = (Note) session.get(Note.class,noteId);
+            if(note == null){
+                resp.sendRedirect("index.jsp");
+                return;
+            }
             Transaction transaction = session.beginTransaction();
-            session.save(note);
+            session.delete(note);
             transaction.commit();
             resp.sendRedirect("all_notes.jsp");
-        }catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

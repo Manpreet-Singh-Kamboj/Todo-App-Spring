@@ -6,16 +6,16 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.Date;
 
 @Entity(
-        name = "Todo"
+        name = "Note"
 )
 @Table(
-        name = "todos"
+        name = "notes"
 )
-public class Todo {
+public class Note {
     @Id
     @GenericGenerator(
             name = "uuid",
-            strategy = "org.hibernate.id.uuid.UuidGenerator"
+            strategy = "org.hibernate.id.UUIDGenerator"
     )
     @GeneratedValue(
             generator = "uuid"
@@ -29,7 +29,8 @@ public class Todo {
     )
     private String title;
     @Column(
-            name = "content"
+            name = "content",
+            length = 99999
     )
     private  String content;
     @Column(
@@ -37,13 +38,12 @@ public class Todo {
     )
     private Date createdDate;
 
-    public Todo(String id, String title, String content, Date createdDate){
-        this.id = id;
+    public Note(String title, String content, Date createdDate){
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
     }
-    public Todo(){
+    public Note(){
 
     }
 
