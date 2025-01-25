@@ -24,7 +24,7 @@
                   <p><%=note.getContent()%></p>
               </div>
               <div class="flex gap-2">
-                  <a class="cursor-pointer rounded-md bg-blue-500 px-5 py-1 font-normal text-white transition-all duration-300 hover:bg-blue-600">
+                  <a href="edit_note.jsp?note_id=<%=note.getId()%>" class="cursor-pointer rounded-md bg-blue-500 px-5 py-1 font-normal text-white transition-all duration-300 hover:bg-blue-600">
                       Update Note
                   </a>
                   <a href="DeleteNoteServlet?note_id=<%=note.getId() %>" class="cursor-pointer rounded-md bg-red-500 px-5 py-1 font-normal text-white transition-all duration-300 hover:bg-red-600">

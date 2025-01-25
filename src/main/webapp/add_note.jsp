@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Note Taker App: Add Todo</title>
+    <title>Note Taker App: Add Note</title>
     <%@include file="all_other_config.jsp" %>
   </head>
   <body class="p-0 m-0">
